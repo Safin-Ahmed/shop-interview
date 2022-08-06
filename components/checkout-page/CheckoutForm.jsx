@@ -6,6 +6,7 @@ import CheckoutTable from "./CheckoutTable";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { cartActions } from "../../store/cart";
+import CustomTextField from "../UI/CustomTextField";
 
 const CheckoutForm = () => {
   const router = useRouter();
@@ -67,9 +68,12 @@ const CheckoutForm = () => {
         >
           Email *
         </Typography>
-        <TextField
+        <CustomTextField
           placeholder="email@example.com"
-          style={{ width: "100%" }}
+          sx={{
+            width: "100%",
+            marginTop: "8px",
+          }}
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -86,8 +90,8 @@ const CheckoutForm = () => {
           >
             First name *
           </Typography>
-          <TextField
-            sx={{ width: "100%" }}
+          <CustomTextField
+            sx={{ width: "100%", marginTop: "8px" }}
             id="first_name"
             variant="outlined"
             value={firstName}
@@ -104,9 +108,9 @@ const CheckoutForm = () => {
           >
             Last name *
           </Typography>
-          <TextField
+          <CustomTextField
             placeholder="Doe"
-            sx={{ width: "100%" }}
+            sx={{ width: "100%", marginTop: "8px" }}
             id="last_name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}

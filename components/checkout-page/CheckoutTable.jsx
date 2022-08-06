@@ -36,13 +36,17 @@ const CheckoutTable = ({ cart }) => {
         <TableHead style={{ background: "#F6F6F6" }}>
           <TableRow style={{ paddingTop: "16px", paddingBottom: "14px" }}>
             <TableCell
-              style={{ color: "#000000", marginLeft: "20px" }}
+              style={{ color: "#000000", marginLeft: "20px", fontSize: "18px" }}
               align="left"
             >
               Product
             </TableCell>
             <TableCell
-              style={{ color: "#000000", marginRight: "20px" }}
+              style={{
+                color: "#000000",
+                marginRight: "20px",
+                fontSize: "18px",
+              }}
               align="right"
             >
               Total

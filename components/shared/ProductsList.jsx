@@ -5,7 +5,11 @@ import ProductCard from "./ProductCard";
 const ProductsList = ({ products }) => {
   return (
     <>
-      <Grid container spacing={3}>
+      <Grid
+        justifyContent={{ xs: "center", md: "initial" }}
+        container
+        spacing={3}
+      >
         {products.map((item) => {
           if (item) {
             return (

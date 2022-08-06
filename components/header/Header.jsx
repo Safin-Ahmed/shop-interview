@@ -15,7 +15,7 @@ import Link from "next/link";
 import StyledBadge from "../UI/Badge";
 import { useSelector, useDispatch } from "react-redux";
 
-const pages = ["Men", "Women"];
+const pages = ["Men", "Women", "Accessories"];
 const settings = ["View Cart"];
 
 const Header = () => {

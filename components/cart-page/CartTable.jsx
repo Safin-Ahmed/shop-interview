@@ -11,23 +11,32 @@ import Quantity from "../UI/Quantity";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/cart";
+import { Close } from "@mui/icons-material";
 
 const CartTable = ({ cart }) => {
   const dispatch = useDispatch();
   return (
-    <TableContainer sx={{ width: "80%", margin: "auto" }} component={Paper}>
+    <TableContainer sx={{ width: "100%", margin: "auto" }} component={Paper}>
       <Table
         sx={{ width: "100%", margin: "auto", border: 0 }}
         aria-label="simple table"
       >
-        <TableHead>
+        <TableHead sx={{ background: "#000" }}>
           <TableRow>
-            <TableCell></TableCell>
-            <TableCell align="left">Product</TableCell>
-            <TableCell align="left">Price</TableCell>
-            <TableCell align="left">Quantity</TableCell>
-            <TableCell align="left">Total</TableCell>
-            <TableCell align="left"></TableCell>
+            <TableCell sx={{ color: "#fff" }}></TableCell>
+            <TableCell sx={{ color: "#fff" }} align="left">
+              Product
+            </TableCell>
+            <TableCell sx={{ color: "#fff" }} align="left">
+              Price
+            </TableCell>
+            <TableCell sx={{ color: "#fff" }} align="left">
+              Quantity
+            </TableCell>
+            <TableCell sx={{ color: "#fff" }} align="left">
+              Total
+            </TableCell>
+            <TableCell sx={{ color: "#fff" }} align="left"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -40,12 +49,19 @@ const CartTable = ({ cart }) => {
                 <Image
                   src={item.product_image}
                   alt={item.product_name}
+                  layout="fixed"
+                  objectFit="cover"
                   width={121}
                   height={118}
                 />
               </TableCell>
-              <TableCell align="left">{item.product_name}</TableCell>
-              <TableCell align="left">{item.price}</TableCell>
+              <TableCell
+                sx={{ fontWeight: "700", fontSize: "16px" }}
+                align="left"
+              >
+                {item.product_name}
+              </TableCell>
+              <TableCell align="left">${item.price}</TableCell>
               <TableCell align="left">
                 <Quantity
                   id={item.product_id}
@@ -53,14 +69,18 @@ const CartTable = ({ cart }) => {
                   value={item.quantity}
                 />
               </TableCell>
-              <TableCell align="left">{item.totalPrice}</TableCell>
+              <TableCell align="left">${item.totalPrice}</TableCell>
               <TableCell align="left">
                 <Button
+                  sx={{
+                    color: "#000",
+                    "&:hover": { background: "transparent" },
+                  }}
                   onClick={() =>
                     dispatch(cartActions.deleteItem({ id: item.product_id }))
                   }
                 >
-                  X
+                  <Close color="#000" />
                 </Button>
               </TableCell>
             </TableRow>

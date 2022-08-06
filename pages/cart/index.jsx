@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import React from "react";
 import CartTable from "../../components/cart-page/CartTable";
 import classes from "./cart.module.css";
@@ -11,21 +11,36 @@ const CartPage = () => {
   const router = useRouter();
 
   return (
-    <div className="cart-page" style={{ marginTop: "8rem" }}>
-      {cart.length > 0 ? (
-        <>
-          <h2>Cart</h2>
-          <CartTable cart={cart} />
-        </>
-      ) : (
-        <h2>Your Cart is Empty!</h2>
-      )}
-      <div className={classes.checkout_btn}>
-        <Button sx={{ my: 5, mx: 5 }} variant="contained" color="primary">
-          <Link href={"/checkout"}>PROCCEED TO CHECKOUT</Link>
-        </Button>
-      </div>
-    </div>
+    <section
+      className="cart-page"
+      style={{ marginTop: "8rem", paddingBottom: "7rem" }}
+    >
+      <Container>
+        {cart.length > 0 ? (
+          <>
+            <h2 style={{ fontSize: "24px", marginBottom: "77px" }}>Cart</h2>
+            <CartTable cart={cart} />
+          </>
+        ) : (
+          <h2>Your Cart is Empty!</h2>
+        )}
+        <div className={classes.checkout_btn}>
+          <Button
+            sx={{
+              marginTop: "38px",
+              mx: 5,
+              background: "#000",
+              padding: "15px 30px",
+              "&:hover": { background: "#1f1d1d" },
+            }}
+            variant="contained"
+            color="primary"
+          >
+            <Link href={"/checkout"}>PROCCEED TO CHECKOUT</Link>
+          </Button>
+        </div>
+      </Container>
+    </section>
   );
 };
 

@@ -44,22 +44,35 @@ const SingleProductPage = ({ product, relatedProducts }) => {
         <Grid
           alignItems="center"
           container
-          spacing={30}
+          rowSpacing={{ xs: 10, md: 0 }}
+          columnSpacing={{ xs: 0, md: 14 }}
+          justifyContent={{ xs: "center", md: "initial" }}
           className={classes.product_page__product}
         >
-          <Grid item md={6} className={classes.product_page__product__image}>
+          <Grid
+            item
+            md={6}
+            xs={12}
+            className={classes.product_page__product__image}
+          >
             <Image
               src={`${product.images[0].src}`}
               alt={product.slug}
               width={580}
               height={580}
-              layout="fixed"
+              layout="responsive"
               objectFit="cover"
             />
           </Grid>
-          <Grid item md={6} className={classes.product_page__details}>
+          <Grid
+            marginLeft={{ xs: 2, md: 0 }}
+            item
+            md={6}
+            xs={12}
+            className={classes.product_page__details}
+          >
             <BreadCumb paths={path} />
-            <h1>{product.name}</h1>
+            <h1 style={{ maxWidth: "94%" }}>{product.name}</h1>
             <Stack
               direction="row"
               spacing={1}
