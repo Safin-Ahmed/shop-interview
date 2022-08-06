@@ -1,0 +1,16 @@
+.product_page {
+  padding: 140px 0;
+}
+
+.breadcumb {
+  font-size: 16px;
+}
+
+.product__add_to_cart {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.related_products {
+  margin-top: 150px;
+}

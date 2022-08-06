@@ -12,7 +12,11 @@ const BackButton = () => {
     <Button
       onClick={backButtonHandler}
       variant="text"
-      startIcon={<ArrowBack />}
+      sx={{
+        color: "#000",
+        "&:hover": { background: "#d2d4d12e" },
+      }}
+      startIcon={<ArrowBack sx={{ color: "#000" }} />}
     >
       Back
     </Button>

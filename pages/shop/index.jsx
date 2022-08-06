@@ -3,8 +3,10 @@ import Link from "next/link";
 import { getProductsData } from "../../store/products-actions";
 import { useDispatch } from "react-redux";
 import { getAllCategories, getAllProducts } from "../../api";
-import ShopList from "../../components/shop-page/ShopList";
 import Categories from "../../components/shared/Categories";
+import { Container } from "@mui/material";
+import classes from "./shop.module.css";
+import ProductsList from "../../components/shared/ProductsList";
 
 const ShopPage = ({ products, categories, url, setUrl }) => {
   const dispatch = useDispatch();
@@ -12,11 +14,13 @@ const ShopPage = ({ products, categories, url, setUrl }) => {
     dispatch(getProductsData());
   }, [dispatch]);
   return (
-    <>
-      <div style={{ marginTop: "8rem" }}>Shop</div>
-      <Categories categories={categories} parent={0} baseUrl={"/shop"} />
-      <ShopList products={products} />
-    </>
+    <section className={classes.shopPage}>
+      <Container maxWidth="lg">
+        <div className={classes.shopPage__title}>Shop</div>
+        <Categories categories={categories} parent={0} baseUrl={"/shop"} />
+        <ProductsList products={products} />
+      </Container>
+    </section>
   );
 };
 
