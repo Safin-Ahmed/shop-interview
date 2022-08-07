@@ -1,3 +1,4 @@
+import Head from "next/head";
 import {
   getAllProducts,
   getProductBySlug,
@@ -6,8 +7,19 @@ import {
 import Product from "../../../../../components/product-page/Product";
 
 const SingleProductPage = ({ product, relatedProducts }) => {
+  if (!product && relatedProducts) {
+    return <h2>Loading...</h2>;
+  }
   if (product && relatedProducts) {
-    return <Product product={product} relatedProducts={relatedProducts} />;
+    return (
+      <>
+        <Head>
+          <title>Interview Shop: {product.name}</title>
+          <meta name="description" content={product.short_description}></meta>
+        </Head>
+        <Product product={product} relatedProducts={relatedProducts} />
+      </>
+    );
   }
 };
 
@@ -22,6 +34,8 @@ export async function getStaticProps(context) {
       props: {
         product,
       },
+
+      revalidate: 1800,
     };
   } else {
     return {
@@ -29,6 +43,7 @@ export async function getStaticProps(context) {
         product,
         relatedProducts,
       },
+      revalidate: 1800,
     };
   }
 }

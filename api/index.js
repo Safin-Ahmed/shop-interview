@@ -1,5 +1,7 @@
 export const getAllProducts = async () => {
-  const response = await fetch("http://localhost:3000/api/products");
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/products`
+  );
   const data = await response.json();
   const finalData = data.map((item) => ({
     id: item.id,
@@ -20,7 +22,9 @@ export const getAllProducts = async () => {
 };
 
 export const getAllCategories = async () => {
-  const response = await fetch("http://localhost:3000/api/categories");
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/categories`
+  );
   const data = await response.json();
   const finalData = data.map((item) => {
     return {
@@ -53,11 +57,4 @@ export const getRelatedProductsByIds = async (ids) => {
   });
 
   return relatedProducts;
-};
-
-export const getParentCategories = async () => {
-  const allCategories = await getAllCategories();
-  const parentCategories = allCategories.filter(
-    (item) => item.parent === 0 && item.name !== "Uncategorized"
-  );
 };

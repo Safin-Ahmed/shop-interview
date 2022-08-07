@@ -1,11 +1,25 @@
+import Head from "next/head";
+import { useRouter } from "next/router";
 import React from "react";
-import { getAllProducts, getParentCategories } from "../../../../api";
+import { getAllProducts } from "../../../../api";
 
 import ProductCategory from "../../../../components/product-category-page/ProductCategory";
 import { capitalizeFirstLetter } from "../../../../utils/utils";
 
 const ProductCategoryPage = ({ products }) => {
-  return <ProductCategory products={products} />;
+  const router = useRouter();
+  const productCategory = router.query.productCategory;
+  if (!products) {
+    return <h2>Loading...</h2>;
+  }
+  return (
+    <>
+      <Head>
+        <title>Interview Shop - {capitalizeFirstLetter(productCategory)}</title>
+      </Head>
+      <ProductCategory products={products} />
+    </>
+  );
 };
 
 export async function getStaticProps(context) {
@@ -40,6 +54,7 @@ export async function getStaticProps(context) {
     props: {
       products: finalProducts,
     },
+    revalidate: 1800,
   };
 }
 

@@ -17,7 +17,7 @@ const MainCategory = ({ products, categories }) => {
   );
 
   return (
-    <section style={{ marginTop: "8rem" }}>
+    <section style={{ marginTop: "7rem", paddingBottom: "5rem" }}>
       <Container maxWidth="lg">
         <BackButton />
         <h1 style={{ textAlign: "center", fontSize: "48px" }}>{parent.name}</h1>

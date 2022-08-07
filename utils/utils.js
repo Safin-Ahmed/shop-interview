@@ -11,7 +11,7 @@ export function serializeCategory(categories) {
     categories[0].slug === "accessories"
   ) {
     parentCategory = categories[0].slug;
-    slug = categories[1]?.name ? categories[1]?.name : "";
+    slug = categories[1]?.name ? categories[1]?.name : "all";
   } else {
     parentCategory = categories[1]?.slug;
     slug = categories[0].name;

@@ -6,7 +6,9 @@ import { useRouter } from "next/router";
 const BackButton = () => {
   const router = useRouter();
   const backButtonHandler = () => {
-    router.back();
+    const paths = router.asPath.split("/");
+    paths.splice(paths.length - 1);
+    router.push(paths.join("/"));
   };
   return (
     <Button

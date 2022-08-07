@@ -1,8 +1,7 @@
 import { Container } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import Categories from "../shared/Categories";
 import ProductsList from "../shared/ProductsList";
-import { useDispatch } from "react-redux";
 import classes from "./shop.module.css";
 
 const Shop = ({ products, categories }) => {

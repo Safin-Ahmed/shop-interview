@@ -1,6 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import { Button, Stack, Typography } from "@mui/material";
 import CheckoutTable from "./CheckoutTable";
 import { useSelector, useDispatch } from "react-redux";
@@ -30,7 +29,7 @@ const CheckoutForm = () => {
 
     console.log(orderData);
 
-    fetch("http://localhost:3000/api/order", {
+    fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/order`, {
       method: "POST",
       body: JSON.stringify(orderData),
     })

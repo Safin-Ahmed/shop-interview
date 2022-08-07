@@ -1,6 +1,6 @@
 # Interview Test - Ecommerce
 
-## Hello!  👋 
+## Hello! 👋
 
 This is a Next.js boilerplate project used as an interview test by [Acrowd](https://acrowd.se). The goal is to test your ability to follow instructions in a simulated "real world project". You will have access to a basic design that must be followed, the store will connect to a [WooCommerce](https://woocommerce.com/) instance with some sample products. In the end, you will have created a simple ecommerce platform based on Next.js.
 
@@ -11,15 +11,15 @@ The project should be treated as a real project so any best practices that can b
 ## Resources
 
 - [The Figma Design](https://www.figma.com/file/z7jZJGxVyjScHaNlVVlh6d/Shop-Interview?node-id=0%3A1) - Figma can be used in the browser or downloaded.
-    - An account can be created to allow for more advanced inspection of sizes, colors and fonts.
+  - An account can be created to allow for more advanced inspection of sizes, colors and fonts.
 - [WooCommerce API Documentation](https://woocommerce.github.io/woocommerce-rest-api-docs) - Use the config below:
-    - Wordpress base URL: `https://shop-interview.acrowd.se`
-    - WooCommerce Consumer Key: `ck_4c0d8a4f83c78831c200e39d1f371e92d419d863`
-    - WooCommerce Consumer Secret: `cs_1eb6c96b9a32942b52a868da3ad28698b15873ff`
+  - Wordpress base URL: `https://shop-interview.acrowd.se`
+  - WooCommerce Consumer Key: `ck_4c0d8a4f83c78831c200e39d1f371e92d419d863`
+  - WooCommerce Consumer Secret: `cs_1eb6c96b9a32942b52a868da3ad28698b15873ff`
 - [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
 - [Wordpress/WooCommerce login](https://shop-interview.acrowd.se/wp-admin) - No changes must be made, login is allowed to validate conneciton.
-    - Username: `acrowd`
-    - Password: `$P$BBFSHDQjE4AXKQUfI`
+  - Username: `acrowd`
+  - Password: `$P$BBFSHDQjE4AXKQUfI`
 
 ---
 
@@ -28,16 +28,16 @@ The project should be treated as a real project so any best practices that can b
 You are to build an ecommerce platform based on the provided design. The store must fetch data from the provided WooCommerce instance. The following functions are required:
 
 - Load and display products
-    - Categorize products with a router and allow for nested categories, eg. `/shop/women/hoodies`
-    - Once in a category, the title should change and the sub categories will be displayed
+  - Categorize products with a router and allow for nested categories, eg. `/shop/women/hoodies`
+  - Once in a category, the title should change and the sub categories will be displayed
 - Display single products using a route like `/product/{product-slug}`
-    - A breadcrumb that displays the products parent categories, eg. `Shop / Women / Hoodies`
-    - Pricing that allows for "sales"
-    - List of featured products
+  - A breadcrumb that displays the products parent categories, eg. `Shop / Women / Hoodies`
+  - Pricing that allows for "sales"
+  - List of featured products
 - A cart that allows the following: `adding`, `removal` and `change in quantity`
-    - The cart route should be `/cart`
+  - The cart route should be `/cart`
 - A mock checkout that contains the required fields and once submitted creates an order in WooCommerce
-    - The checkout route should be `/checkout`
+  - The checkout route should be `/checkout`
 
 <br>
 
@@ -62,3 +62,14 @@ These functions in no particular order are optional but will really increase the
 ## Delivery
 
 Clone this repo and once the project is completed, push the changes and send your repo URL to your contact person at Acrowd. For any questions about the project that's not specified here, don't hesitate to contact us!
+
+## Instructions
+
+To run the project on development server
+
+- Add the follwing datas into your next.config.js env properties :
+  `env: { NEXT_PUBLIC_SITE_URL: "http://localhost:3000", WP_BASE_URL: "https://shop-interview.acrowd.se", WC_CONSUMER_KEY: "ck_4c0d8a4f83c78831c200e39d1f371e92d419d863", WC_CONSUMER_SECRET: "cs_1eb6c96b9a32942b52a868da3ad28698b15873ff", }`
+
+- Run npm install
+- Run npm run dev
+- Click on (http://localhost:3000)

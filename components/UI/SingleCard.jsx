@@ -3,9 +3,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Link from "next/link";
 import Typography from "@mui/material/Typography";
-import { Box, CardActionArea, Chip, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import Image from "next/image";
-import StyledBadge from "./Badge";
 
 export default function SingleCard({
   image,

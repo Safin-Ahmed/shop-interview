@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 import { cartActions } from "../../store/cart";
 import classes from "./Quantity.module.css";
 import AddIcon from "@mui/icons-material/Add";
