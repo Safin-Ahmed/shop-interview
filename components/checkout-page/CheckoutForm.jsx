@@ -37,6 +37,7 @@ const CheckoutForm = () => {
       .then((data) => {
         if (data.id) {
           alert("Order Placed Successfully!");
+          dispatch(cartActions.clearCart());
           router.replace("/shop");
           dispatch(cartActions.clearCart());
         }

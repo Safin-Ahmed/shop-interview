@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialCartSlice = {
   counter: 0,
-  showCart: false,
   items: [],
 };
 
@@ -61,7 +60,8 @@ const cartSlice = createSlice({
     },
 
     clearCart(state) {
-      state = initialCartSlice;
+      state.counter = 0;
+      state.items = [];
     },
   },
 });

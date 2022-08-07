@@ -17,7 +17,6 @@ export const getAllProducts = async () => {
     variations: item.variations,
     related_ids: item.related_ids,
   }));
-
   return finalData;
 };
 
