@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SingleCard from "../UI/SingleCard";
+import { serializeCategory } from "../../utils/utils";
 
 const ProductCard = ({
   image,
@@ -12,9 +13,8 @@ const ProductCard = ({
   sale,
   regular,
 }) => {
-  const url = `shop/${
-    categories[1] ? categories[1]?.name.toLowerCase() : "accessories"
-  }/${categories[0].name.toLowerCase()}/${slug}`;
+  const { parent, slug: productCategory } = serializeCategory(categories);
+  const url = `shop/${parent}/${productCategory}/${slug}`;
   return (
     <SingleCard
       image={image}

@@ -54,3 +54,10 @@ export const getRelatedProductsByIds = async (ids) => {
 
   return relatedProducts;
 };
+
+export const getParentCategories = async () => {
+  const allCategories = await getAllCategories();
+  const parentCategories = allCategories.filter(
+    (item) => item.parent === 0 && item.name !== "Uncategorized"
+  );
+};

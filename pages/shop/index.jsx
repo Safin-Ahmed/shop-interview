@@ -1,27 +1,8 @@
-import React, { useEffect } from "react";
-import Link from "next/link";
-import { getProductsData } from "../../store/products-actions";
-import { useDispatch } from "react-redux";
 import { getAllCategories, getAllProducts } from "../../api";
-import Categories from "../../components/shared/Categories";
-import { Container } from "@mui/material";
-import classes from "./shop.module.css";
-import ProductsList from "../../components/shared/ProductsList";
+import Shop from "../../components/shop-page/Shop";
 
-const ShopPage = ({ products, categories, url, setUrl }) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProductsData());
-  }, [dispatch]);
-  return (
-    <section className={classes.shopPage}>
-      <Container maxWidth="lg">
-        <div className={classes.shopPage__title}>Shop</div>
-        <Categories categories={categories} parent={0} baseUrl={"/shop"} />
-        <ProductsList products={products} />
-      </Container>
-    </section>
-  );
+const ShopPage = ({ products, categories }) => {
+  return <Shop products={products} categories={categories} />;
 };
 
 export async function getStaticProps(context) {
