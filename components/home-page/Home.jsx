@@ -1,4 +1,5 @@
-import { Box, Button, Container, Link, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import classes from "./home.module.css";
