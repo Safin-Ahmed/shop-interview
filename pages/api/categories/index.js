@@ -1,9 +1,14 @@
 import { WooCommerce } from "..";
 
-function handler(req, res) {
-  WooCommerce.get("products/categories").then((response) => {
+async function handler(req, res) {
+  try {
+    const response = await WooCommerce.get("products/categories");
     res.status(200).json(response.data);
-  });
+    res.end();
+  } catch (e) {
+    res.json(e);
+    res.status(405).end();
+  }
 }
 
 export default handler;

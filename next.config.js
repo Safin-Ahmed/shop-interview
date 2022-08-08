@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [`${process.env.WP_BASE_URL}`],
+    domains: [`${process.env.WP_DOMAIN}`],
   },
 };
 
