@@ -23,7 +23,7 @@ const CheckoutTable = ({ cart }) => {
     }, 0);
   }
 
-  console.log(totalPrice);
+  totalPrice += 10;
   return (
     <TableContainer
       style={{ width: "100%", margin: 0, marginTop: "7rem" }}
@@ -68,6 +68,18 @@ const CheckoutTable = ({ cart }) => {
               <TableCell align="right">${item.totalPrice}</TableCell>
             </TableRow>
           ))}
+
+          <TableRow
+            style={{ marginTop: "23px" }}
+            sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+          >
+            <TableCell align="left">
+              <Typography variant="body" component="div">
+                Shipping Flat Rate
+              </Typography>
+            </TableCell>
+            <TableCell align="right">$10.00</TableCell>
+          </TableRow>
 
           <TableRow style={{ marginTop: "30px" }}>
             <TableCell align="left">

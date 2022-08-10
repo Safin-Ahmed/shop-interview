@@ -22,17 +22,6 @@ const ProductCard = ({
       regular={regular}
       url={url}
     />
-
-    // <Link href={`/${url}`}>
-    //   <a>
-    //     <Image src={`${image.src}`} alt={title} width={280} height={274} />
-    //     <h2>{title}</h2>
-    //     <div>
-    //       <h4>{price}</h4>
-    //       {sale && <h5>{sale}</h5>}
-    //     </div>
-    //   </a>
-    // </Link>
   );
 };
 

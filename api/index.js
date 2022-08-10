@@ -1,41 +1,30 @@
+let allProducts = [];
+let allCategories = [];
+
 export const getAllProducts = async () => {
+  if (allProducts.length > 0) {
+    return allProducts;
+  }
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/products`
   );
   const data = await response.json();
-  const finalData = data.map((item) => ({
-    id: item.id,
-    name: item.name,
-    slug: item.slug,
-    short_description: item.short_description,
-    price: item.price,
-    regular_price: item.regular_price,
-    sale_price: item.sale_price,
-    categories: item.categories,
-    images: item.images,
-    attributes: item.attributes,
-    variations: item.variations,
-    related_ids: item.related_ids,
-  }));
-  return finalData;
+  allProducts = [...data];
+  return data;
 };
 
 export const getAllCategories = async () => {
+  if (allCategories.length > 0) {
+    return allCategories;
+  }
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/categories`
   );
   const data = await response.json();
-  const finalData = data.map((item) => {
-    return {
-      id: item.id,
-      name: item.name,
-      slug: item.slug,
-      count: item.count,
-      parent: item.parent,
-    };
-  });
 
-  return finalData;
+  allCategories = [...data];
+
+  return data;
 };
 
 export const getProductBySlug = async (slug) => {

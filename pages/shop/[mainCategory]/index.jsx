@@ -4,12 +4,9 @@ import { getAllCategories, getAllProducts } from "../../../api";
 import MainCategory from "../../../components/main-category-page/MainCategory";
 import { capitalizeFirstLetter } from "../../../utils/utils";
 
-const MainCategoryPage = ({ products, categories }) => {
+const MainCategoryPage = ({ products, categories, parent }) => {
   const router = useRouter();
   const categoryName = router.query.mainCategory;
-  if (!products) {
-    return <h2>Loading...</h2>;
-  }
   return (
     <>
       <Head>
@@ -21,32 +18,34 @@ const MainCategoryPage = ({ products, categories }) => {
           )}'s category`}
         ></meta>
       </Head>
-      <MainCategory products={products} categories={categories} />
+      <MainCategory
+        categoryName={categoryName}
+        products={products}
+        categories={categories}
+        parent={parent}
+      />
     </>
   );
 };
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const categoryName = params.mainCategory;
   const finalData = await getAllProducts();
   const finalCategoriesData = await getAllCategories();
+  const parent = finalCategoriesData.find((item) => item.slug === categoryName);
+  const finalProducts = finalData.filter(
+    (item) =>
+      item.categories[0]?.id === parent.id ||
+      item.categories[1]?.id === parent.id
+  );
 
   return {
     props: {
-      products: finalData,
+      products: finalProducts,
       categories: finalCategoriesData,
+      parent,
     },
-    revalidate: 1800,
-  };
-}
-
-export async function getStaticPaths(context) {
-  return {
-    paths: [
-      { params: { mainCategory: "men" } },
-      { params: { mainCategory: "women" } },
-      { params: { mainCategory: "accessories" } },
-    ],
-    fallback: true,
   };
 }
 

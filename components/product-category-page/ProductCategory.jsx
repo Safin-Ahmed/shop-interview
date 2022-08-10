@@ -6,10 +6,6 @@ import BackButton from "../UI/BackButton";
 
 const ProductCategory = ({ products }) => {
   const router = useRouter();
-
-  if (!products) {
-    return <CircularProgress color="primary" />;
-  }
   return (
     <section style={{ marginTop: "8rem" }}>
       <Container maxWidth="lg">

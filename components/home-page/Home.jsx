@@ -33,17 +33,21 @@ const Home = () => {
               direction="row"
               justifyContent={{ xs: "center", md: "initial" }}
             >
-              <Button
-                variant="contained"
-                sx={{
-                  background: "#000",
-                  width: "40%",
-                  marginTop: "35px",
-                  "&:hover": { background: "#0cb887" },
-                }}
-              >
-                <Link href="/shop">Shop Now</Link>
-              </Button>
+              <Link href="/shop">
+                <a>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      background: "#000",
+                      width: "100%",
+                      marginTop: "35px",
+                      "&:hover": { background: "#0cb887" },
+                    }}
+                  >
+                    Shop Now
+                  </Button>
+                </a>
+              </Link>
             </Stack>
           </Box>
         </Stack>

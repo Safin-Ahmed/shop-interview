@@ -8,13 +8,6 @@ const Categories = ({ categories, parent, baseUrl }) => {
   return (
     <div>
       <BtnGroup categories={filteredCategories} baseUrl={baseUrl} />
-      {/* <ul>
-        {filteredCategories.map((item) => (
-          <Link key={item.id} href={`${baseUrl}/${item.slug}`}>
-            {item.name}
-          </Link>
-        ))}
-      </ul> */}
     </div>
   );
 };

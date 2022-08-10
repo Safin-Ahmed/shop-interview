@@ -5,17 +5,7 @@ import BackButton from "../UI/BackButton";
 import Categories from "../shared/Categories";
 import ProductsList from "../shared/ProductsList";
 
-const MainCategory = ({ products, categories }) => {
-  const router = useRouter();
-  const parentName = router.query.mainCategory;
-
-  const parent = categories.find((item) => item.slug === parentName);
-  const finalProducts = products.filter(
-    (item) =>
-      item.categories[0]?.id === parent.id ||
-      item.categories[1]?.id === parent.id
-  );
-
+const MainCategory = ({ products, categories, categoryName, parent }) => {
   return (
     <section style={{ marginTop: "7rem", paddingBottom: "5rem" }}>
       <Container maxWidth="lg">
@@ -24,9 +14,9 @@ const MainCategory = ({ products, categories }) => {
         <Categories
           categories={categories}
           parent={parent.id}
-          baseUrl={`/shop/${parentName}`}
+          baseUrl={`/shop/${categoryName}`}
         />
-        <ProductsList products={finalProducts} />
+        <ProductsList products={products} />
       </Container>
     </section>
   );
