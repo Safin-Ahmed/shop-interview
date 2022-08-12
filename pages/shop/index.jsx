@@ -15,17 +15,13 @@ const ShopPage = ({ products, categories }) => {
 };
 
 export async function getServerSideProps(context) {
-  // const finalData = await getAllProducts();
-  // const finalCategoriesData = await getAllCategories();
-  const productResponse = await fetch("/api/products");
-  const categoryResponse = await fetch("/api/categories");
-  const productData = await productResponse.json();
-  const categorydata = await categoryResponse.json();
+  const finalData = await getAllProducts();
+  const finalCategoriesData = await getAllCategories();
 
   return {
     props: {
-      products: productData,
-      categories: categorydata,
+      products: finalData,
+      categories: finalCategoriesData,
     },
   };
 }
