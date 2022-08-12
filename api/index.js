@@ -3,8 +3,10 @@ let allCategories = [];
 
 export const getAllProducts = async () => {
   if (allProducts.length > 0) {
+    console.log("Using Memory Products");
     return allProducts;
   }
+  console.log("Using Fetch Request for Products");
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/products`
   );
@@ -15,8 +17,10 @@ export const getAllProducts = async () => {
 
 export const getAllCategories = async () => {
   if (allCategories.length > 0) {
+    console.log("Using Memory Categories");
     return allCategories;
   }
+  console.log("Using Fetch Request for Categories");
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/categories`
   );

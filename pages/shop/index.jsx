@@ -14,7 +14,7 @@ const ShopPage = ({ products, categories }) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const finalData = await getAllProducts();
   const finalCategoriesData = await getAllCategories();
 
@@ -23,8 +23,6 @@ export async function getStaticProps(context) {
       products: finalData,
       categories: finalCategoriesData,
     },
-
-    revalidate: 1800,
   };
 }
 

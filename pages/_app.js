@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
     router.events.on("routeChangeComplete", () => {
       setLoading(false);
     });
-  }, []);
+  }, [router.events]);
   const theme = createTheme({
     typography: {
       fontFamily: ["Inter", "sans-serif"].join(","),
