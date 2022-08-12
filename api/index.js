@@ -8,9 +8,7 @@ export const getAllProducts = async () => {
   }
   console.log("Using Fetch Request for Products");
   const response = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_VERCEL_URL
-    }/api/products`
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/products`
   );
   const data = await response.json();
   allProducts = [...data];
@@ -24,9 +22,7 @@ export const getAllCategories = async () => {
   }
   console.log("Using Fetch Request for Categories");
   const response = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_VERCEL_URL
-    }/api/categories`
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/categories`
   );
   const data = await response.json();
 

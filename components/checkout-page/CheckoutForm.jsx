@@ -29,15 +29,10 @@ const CheckoutForm = () => {
 
     console.log(orderData);
 
-    fetch(
-      `${
-        process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_VERCEL_URL
-      }/api/order`,
-      {
-        method: "POST",
-        body: JSON.stringify(orderData),
-      }
-    )
+    fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/order`, {
+      method: "POST",
+      body: JSON.stringify(orderData),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.id) {
