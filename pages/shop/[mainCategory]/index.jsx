@@ -1,12 +1,10 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { getAllCategories, getAllProducts } from "../../../api";
+import { getAllCategories, getProductsByCategory } from "../../../api";
 import MainCategory from "../../../components/main-category-page/MainCategory";
 import { capitalizeFirstLetter } from "../../../utils/utils";
 
-const MainCategoryPage = ({ products, categories, parent }) => {
-  const router = useRouter();
-  const categoryName = router.query.mainCategory;
+const MainCategoryPage = ({ products, categories, parent, categoryName }) => {
   return (
     <>
       <Head>
@@ -31,20 +29,17 @@ const MainCategoryPage = ({ products, categories, parent }) => {
 export async function getServerSideProps(context) {
   const { params } = context;
   const categoryName = params.mainCategory;
-  const finalData = await getAllProducts();
-  const finalCategoriesData = await getAllCategories();
-  const parent = finalCategoriesData.find((item) => item.slug === categoryName);
-  const finalProducts = finalData.filter(
-    (item) =>
-      item.categories[0]?.id === parent.id ||
-      item.categories[1]?.id === parent.id
-  );
+  const categoriesData = await getAllCategories();
+  const parent = categoriesData.find((item) => item.slug === categoryName);
+  const finalProducts = await getProductsByCategory(parent.id);
+  const finalCategories = await getAllCategories(parent.id);
 
   return {
     props: {
       products: finalProducts,
-      categories: finalCategoriesData,
+      categories: finalCategories,
       parent,
+      categoryName,
     },
   };
 }

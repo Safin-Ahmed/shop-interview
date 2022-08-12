@@ -11,11 +11,7 @@ const MainCategory = ({ products, categories, categoryName, parent }) => {
       <Container maxWidth="lg">
         <BackButton />
         <h1 style={{ textAlign: "center", fontSize: "48px" }}>{parent.name}</h1>
-        <Categories
-          categories={categories}
-          parent={parent.id}
-          baseUrl={`/shop/${categoryName}`}
-        />
+        <Categories categories={categories} baseUrl={`/shop/${categoryName}`} />
         <ProductsList products={products} />
       </Container>
     </section>

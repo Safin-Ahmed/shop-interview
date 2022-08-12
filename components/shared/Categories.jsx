@@ -1,13 +1,10 @@
 import React from "react";
 import BtnGroup from "../UI/BtnGroup";
 
-const Categories = ({ categories, parent, baseUrl }) => {
-  const filteredCategories = categories.filter(
-    (item) => item.parent === parent && item.name !== "Uncategorized"
-  );
+const Categories = ({ categories, baseUrl }) => {
   return (
     <div>
-      <BtnGroup categories={filteredCategories} baseUrl={baseUrl} />
+      <BtnGroup categories={categories} baseUrl={baseUrl} />
     </div>
   );
 };

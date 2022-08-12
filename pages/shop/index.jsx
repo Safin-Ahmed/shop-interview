@@ -16,7 +16,7 @@ const ShopPage = ({ products, categories }) => {
 
 export async function getServerSideProps(context) {
   const finalData = await getAllProducts();
-  const finalCategoriesData = await getAllCategories();
+  const finalCategoriesData = await getAllCategories(0);
 
   return {
     props: {
