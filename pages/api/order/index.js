@@ -47,11 +47,9 @@ function handler(req, res) {
 
     WooCommerce.post("orders", data)
       .then((response) => {
-        console.log(response.data);
         res.status(200).json(response.data);
       })
       .catch((error) => {
-        console.log(error.response.data);
         res.status(400).json(error.response.data);
       });
   }
