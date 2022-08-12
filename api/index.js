@@ -32,6 +32,16 @@ export const getAllCategories = async (parentId = null) => {
   return data;
 };
 
+export const getCategoryBySlug = async (slug) => {
+  const response = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL
+    }/api/categories?slug=${slug}`
+  );
+  const data = await response.json();
+  return data;
+};
+
 export const getProductBySlug = async (slug) => {
   const allProducts = await getAllProducts();
   const product = allProducts.find((item) => item.slug === slug);

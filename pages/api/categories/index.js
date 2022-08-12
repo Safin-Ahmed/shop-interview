@@ -5,6 +5,7 @@ async function handler(req, res) {
   try {
     const response = await WooCommerce.get("products/categories", {
       parent: queries.parent ? queries.parent : null,
+      slug: queries.slug ? queries.slug : "",
       exclude: [15],
     });
     res.status(200).json(response.data);
