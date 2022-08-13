@@ -1,24 +1,48 @@
-import { Container, Grid, Stack } from "@mui/material";
+import { Box, Container, Grid, IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/cart";
 import { capitalizeFirstLetter } from "../../utils/utils";
 import ProductsList from "../shared/ProductsList";
 import BreadCumb from "../UI/BreadCumb";
 import Quantity from "../UI/Quantity";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import classes from "./product.module.css";
 
 const Product = ({ product, relatedProducts }) => {
+  const [selectedImage, setSelectedImage] = useState(product.images[0]?.src);
+  const [clicked, setClicked] = useState(0);
   const router = useRouter();
   const dispatch = useDispatch();
   const path = router.asPath.split("/");
-  const finalPath = `${capitalizeFirstLetter(
-    path[1]
-  )} / ${capitalizeFirstLetter(path[2])} / ${capitalizeFirstLetter(path[3])}`;
   const quantityRef = useRef(1);
   const [value, setValue] = useState(1);
+  useEffect(() => {
+    if (!product.images[clicked]) {
+      return setClicked((prev) => 0);
+    }
+    setSelectedImage((prev) => product.images[clicked].src);
+  }, [clicked, product.images]);
+  const handleArrowKeys = (action) => {
+    if (action === "next") {
+      if (clicked < product.images.length - 1) {
+        setClicked((prev) => prev + 1);
+      } else {
+        setClicked((prev) => prev - prev);
+      }
+    }
+
+    if (action === "prev") {
+      if (clicked > 0) {
+        setClicked((prev) => prev - 1);
+      } else {
+        setClicked((prev) => product.images.length - 1);
+      }
+    }
+  };
   const handleAddToCart = () => {
     const data = {
       id: product.id,
@@ -53,13 +77,53 @@ const Product = ({ product, relatedProducts }) => {
             className={classes.product_page__product__image}
           >
             <Image
-              src={`${product.images[0].src}`}
+              src={selectedImage}
               alt={product.slug}
               width={580}
               height={580}
               layout="responsive"
               objectFit="cover"
             />
+
+            <Stack
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              sx={{ gap: "1rem", mt: 2 }}
+            >
+              <IconButton onClick={() => handleArrowKeys("prev")}>
+                <ArrowBackIosIcon />
+              </IconButton>
+              {product.images.map((item, index) => (
+                <Box
+                  sx={{
+                    cursor: "pointer",
+                    border:
+                      clicked === index ? "5px solid #000 !important" : "",
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                  key={item.id}
+                >
+                  <Image
+                    key={item.id}
+                    src={item.src}
+                    alt={item.name}
+                    width={150}
+                    height={150}
+                    objectFit="cover"
+                    onClick={() => {
+                      setSelectedImage(item.src);
+                      setClicked(index);
+                    }}
+                  />
+                </Box>
+              ))}
+              <IconButton onClick={() => handleArrowKeys("next")}>
+                <ArrowForwardIosIcon />
+              </IconButton>
+            </Stack>
           </Grid>
           <Grid
             marginLeft={{ xs: 2, md: 0 }}
